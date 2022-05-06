@@ -39,17 +39,17 @@ CREATE TABLE SpotifyClone.usuarios(
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.seguidores(
-    seguidor_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
+    PRIMARY KEY(usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.historico_de_reproducoes(
-    historico_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     cancao_id INT NOT NULL,
+    PRIMARY KEY(usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
     FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
     data_reproducao DATETIME NOT NULL
@@ -147,7 +147,7 @@ VALUES
   (1, 4),
   (1, 3),
   (2, 1),
-  (2, 4),
+  (2, 3),
   (3, 2),
   (3, 1),
   (4, 4),
